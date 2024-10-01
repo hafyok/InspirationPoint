@@ -11,12 +11,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
+import com.example.inspirationpoint.data.AppDatabase
+import com.example.inspirationpoint.data.MessageSent
 import com.example.inspirationpoint.ui.theme.InspirationPointTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    private lateinit var db: AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        db = AppDatabase.getDatabase(this)
         setContent {
             InspirationPointTheme {
                 Scaffold(
@@ -31,6 +39,11 @@ class MainActivity : ComponentActivity() {
                 )
 
             }
+        }
+
+        lifecycleScope.launch {
+            val messageM = MessageSent(0, 99999999L, "12.12.2024", "Me", "Test text")
+            db.daoMessage().insertMessageSent(messageM)
         }
     }
 }

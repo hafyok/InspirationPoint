@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class MessageSent(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val time: Long,
     val date: String,
     val author: String,

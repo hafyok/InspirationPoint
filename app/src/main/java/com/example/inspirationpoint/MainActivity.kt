@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             val messageM = MessageSent(0, 99999999L, "12.12.2024", "Me", "Test text")
             db.daoMessage().insertMessageSent(messageM)
+            db.daoMessage().insertMessageSent(messageM)
         }
     }
 }

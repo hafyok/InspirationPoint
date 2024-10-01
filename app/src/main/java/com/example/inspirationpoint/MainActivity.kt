@@ -16,6 +16,7 @@ import com.example.inspirationpoint.data.AppDatabase
 import com.example.inspirationpoint.data.MessageSent
 import com.example.inspirationpoint.ui.theme.InspirationPointTheme
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class MainActivity : ComponentActivity() {
     private lateinit var db: AppDatabase
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
         }
 
         lifecycleScope.launch {
-            val messageM = MessageSent(0, 99999999L, "12.12.2024", "Me", "Test text")
+            val messageM = MessageSent(0, 99999999L, Calendar.getInstance().time, "Me", "Test text")
             db.daoMessage().insertMessageSent(messageM)
             db.daoMessage().insertMessageSent(messageM)
         }

@@ -1,4 +1,4 @@
-package com.example.inspirationpoint
+package com.example.inspirationpoint.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

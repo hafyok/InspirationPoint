@@ -41,11 +41,5 @@ class MainActivity : ComponentActivity() {
 
             }
         }
-
-        lifecycleScope.launch {
-            val messageM = MessageSent(0, 99999999L, Calendar.getInstance().time, "Me", "Test text")
-            db.daoMessage().insertMessageSent(messageM)
-            db.daoMessage().insertMessageSent(messageM)
-        }
     }
 }

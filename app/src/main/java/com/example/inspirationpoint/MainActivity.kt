@@ -12,18 +12,15 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.inspirationpoint.data.AppDatabase
-import com.example.inspirationpoint.presentation.ViewModelMessage
 import com.example.inspirationpoint.ui.theme.InspirationPointTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private lateinit var viewModelMessage: ViewModelMessage
     private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModelMessage = ViewModelMessage((application as App).messageRepositoryImpl)
         enableEdgeToEdge()
 
         db = AppDatabase.getDatabase(this)

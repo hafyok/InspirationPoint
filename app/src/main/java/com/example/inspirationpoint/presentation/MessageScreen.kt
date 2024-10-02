@@ -50,26 +50,11 @@ fun MessageScreen(
         HorizontalDivider()
 
         // Раздел "Received"
-        MessageReceived()
+        MessageReceived(messageReceived)
 
         MessageSent(messageSent)
 
-
         MessageNew()
-        /*
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            TextButton(onClick = { *//* TODO *//* }) { Text("Home") }
-            TextButton(onClick = { *//* TODO *//* }) { Text("Devs") }
-            TextButton(onClick = { *//* TODO *//* }) { Text("Apparatuses") }
-            TextButton(onClick = { *//* TODO *//* }) { Text("Messages") }
-            TextButton(onClick = { *//* TODO *//* }) { Text("Statistics") }
-            TextButton(onClick = { *//* TODO *//* }) { Text("Settings") }
-        }*/
     }
 }
 

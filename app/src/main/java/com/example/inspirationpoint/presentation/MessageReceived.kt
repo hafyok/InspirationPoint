@@ -4,16 +4,22 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inspirationpoint.data.MessageReceived
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @Composable
-fun MessageReceived(){
+fun MessageReceived(listMessage: List<MessageReceived>){
     Text(
         text = "Received",
         style = MaterialTheme.typography.bodyLarge,
@@ -21,7 +27,7 @@ fun MessageReceived(){
     )
 
     // Таблица с данными
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxWidth().height(100.dp)) {
         // Заголовки
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -34,20 +40,28 @@ fun MessageReceived(){
             TableHeaderText(text = "Text")
         }
         HorizontalDivider()
-        repeat(2) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                TableRowText(text = "245")
-                TableRowText(text = "13:56:20")
-                TableRowText(text = "03.12.2022")
-                TableRowText(text = "Dmitrii")
-                TableRowText(text = "Approve all LiveData")
+        LazyColumn {
+            items(listMessage){
+                    item ->
+                ItemRecordReceived(message = item)
             }
-            HorizontalDivider()
         }
     }
+}
+
+@Composable
+fun ItemRecordReceived(message: MessageReceived){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        TableRowText(text = message.id.toString())
+        TableRowText(text = SimpleDateFormat("HH:mm:ss").format(Date(message.time)).toString())
+        TableRowText(text = SimpleDateFormat("dd.MM.yyyy").format(message.date))
+        TableRowText(text = message.recepient)
+        TableRowText(text = message.text)
+    }
+    HorizontalDivider()
 }

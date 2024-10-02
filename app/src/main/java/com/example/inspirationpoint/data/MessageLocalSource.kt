@@ -1,8 +1,9 @@
 package com.example.inspirationpoint.data
 
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class MessageLocalSource(private val daoMessage: DaoMessage) {
+class MessageLocalSource @Inject constructor(private val daoMessage: DaoMessage) {
     fun getAllMessageReceived(): Flow<List<MessageReceived>>{
         return daoMessage.getAllMessageReceived()
     }

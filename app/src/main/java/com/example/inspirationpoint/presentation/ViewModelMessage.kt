@@ -7,11 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.inspirationpoint.data.MessageReceived
 import com.example.inspirationpoint.data.MessageRepositoryImpl
 import com.example.inspirationpoint.data.MessageSent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class ViewModelMessage (private val repository: MessageRepositoryImpl): ViewModel() {
+@HiltViewModel
+class ViewModelMessage @Inject constructor (private val repository: MessageRepositoryImpl): ViewModel() {
     val messagesSent: LiveData<List<MessageSent>> = repository.messagesSent.asLiveData()
     val messagesReceived: LiveData<List<MessageReceived>> = repository.messagesReceived.asLiveData()
 

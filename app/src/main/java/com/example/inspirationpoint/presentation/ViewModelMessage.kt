@@ -21,5 +21,9 @@ class ViewModelMessage (private val repository: MessageRepositoryImpl): ViewMode
         }
     }
 
-
+    fun insertReceived(messageReceived: MessageReceived) = viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            repository.insertMessageReceived(messageReceived)
+        }
+    }
 }

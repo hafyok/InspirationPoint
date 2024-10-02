@@ -52,7 +52,7 @@ fun MessageScreen(
         // Раздел "Received"
         MessageReceived()
 
-        MessageSent()
+        MessageSent(messageSent)
 
 
         MessageNew()

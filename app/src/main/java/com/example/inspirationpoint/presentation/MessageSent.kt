@@ -5,15 +5,23 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposableOpenTarget
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inspirationpoint.data.MessageSent
+import kotlinx.coroutines.flow.merge
+import java.util.Calendar
+import java.util.Date
 
 @Composable
-fun MessageSent(){
+fun MessageSent(listMessage: List<MessageSent>){
     Text(
         text = "Sent",
         style = MaterialTheme.typography.bodyLarge,
@@ -35,7 +43,14 @@ fun MessageSent(){
         }
         HorizontalDivider()
         // Строки данных
-        repeat(2) {
+
+        LazyColumn {
+            items(listMessage){
+                item ->
+                ItemRecord(message = item)
+            }
+        }
+        /*repeat(2) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -49,6 +64,23 @@ fun MessageSent(){
                 TableRowText(text = "CAM-05 is down")
             }
             HorizontalDivider()
-        }
+        }*/
     }
+}
+
+@Composable
+fun ItemRecord (message: MessageSent){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        TableRowText(text = message.id.toString())
+        TableRowText(text = Date(message.time).toString())
+        TableRowText(text = message.date.toString())
+        TableRowText(text = message.author)
+        TableRowText(text = message.text)
+    }
+    HorizontalDivider()
 }

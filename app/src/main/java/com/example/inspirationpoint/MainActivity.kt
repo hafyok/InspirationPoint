@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.example.inspirationpoint.data.AppDatabase
+import com.example.inspirationpoint.presentation.navigation.AppNavigation
+import com.example.inspirationpoint.presentation.navigation.BottomNavigation
 import com.example.inspirationpoint.ui.theme.InspirationPointTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
         db = AppDatabase.getDatabase(this)
         setContent {
+            val navController = rememberNavController()
             InspirationPointTheme {
 
                 Scaffold(
@@ -33,11 +37,14 @@ class MainActivity : ComponentActivity() {
                         AppNavigation(
                             modifier = Modifier
                                 .padding(innerPadding) // Padding из Scaffold
-                                .padding(WindowInsets.statusBars.asPaddingValues())
+                                .padding(WindowInsets.statusBars.asPaddingValues()),
+                            navHostController = navController
                         )
+                    },
+                    bottomBar = {
+                        BottomNavigation(navController = navController)
                     }
                 )
-
             }
         }
     }

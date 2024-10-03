@@ -68,9 +68,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
+    implementation(libs.androidx.runtime.livedata)
 
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material)
 
     //val room_version = "2.6.1"
 
@@ -80,12 +81,11 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)
 
-    val lifecycleVersion = "2.6.2"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-android-compiler:2.48")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation (libs.androidx.hilt.navigation.compose)
 }

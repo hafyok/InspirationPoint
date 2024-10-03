@@ -1,4 +1,4 @@
-package com.example.inspirationpoint.presentation
+package com.example.inspirationpoint.presentation.MessageScreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,14 +14,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inspirationpoint.data.MessageSent
+import com.example.inspirationpoint.data.MessageReceived
 import java.text.SimpleDateFormat
 import java.util.Date
 
 @Composable
-fun MessageSent(listMessage: List<MessageSent>){
+fun MessageReceived(listMessage: List<MessageReceived>){
     Text(
-        text = "Sent",
+        text = "Received",
         style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.padding(vertical = 16.dp),
     )
@@ -36,23 +36,21 @@ fun MessageSent(listMessage: List<MessageSent>){
             TableHeaderText(text = "#")
             TableHeaderText(text = "Time")
             TableHeaderText(text = "Date")
-            TableHeaderText(text = "Recepient")
+            TableHeaderText(text = "Author")
             TableHeaderText(text = "Text")
         }
         HorizontalDivider()
-        // Строки данных
-
         LazyColumn {
             items(listMessage){
-                item ->
-                ItemRecordSent(message = item)
+                    item ->
+                ItemRecordReceived(message = item)
             }
         }
     }
 }
 
 @Composable
-fun ItemRecordSent(message: MessageSent){
+fun ItemRecordReceived(message: MessageReceived){
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -62,7 +60,7 @@ fun ItemRecordSent(message: MessageSent){
         TableRowText(text = message.id.toString())
         TableRowText(text = SimpleDateFormat("HH:mm:ss").format(Date(message.time)).toString())
         TableRowText(text = SimpleDateFormat("dd.MM.yyyy").format(message.date))
-        TableRowText(text = message.author)
+        TableRowText(text = message.recepient)
         TableRowText(text = message.text)
     }
     HorizontalDivider()

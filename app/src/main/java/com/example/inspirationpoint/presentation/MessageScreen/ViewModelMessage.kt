@@ -1,4 +1,4 @@
-package com.example.inspirationpoint.presentation
+package com.example.inspirationpoint.presentation.MessageScreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

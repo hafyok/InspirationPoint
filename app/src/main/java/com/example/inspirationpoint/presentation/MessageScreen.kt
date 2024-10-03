@@ -54,7 +54,9 @@ fun MessageScreen(
 
         MessageSent(messageSent)
 
-        MessageNew()
+        MessageNew(
+            onClickSent = { message -> viewModelMessage.insertSent(message) },
+            onClickReceived = { message -> viewModelMessage.insertReceived(message) })
     }
 }
 

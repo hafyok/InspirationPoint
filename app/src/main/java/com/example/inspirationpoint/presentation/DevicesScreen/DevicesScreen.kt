@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 
@@ -94,6 +96,7 @@ fun DevicesScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
+                .height(250.dp)
         ) {
             items(filteredDevices) { device ->
                 Row(
@@ -114,7 +117,7 @@ fun DevicesScreen() {
         }
 
         Column(modifier = Modifier.padding(top = 16.dp)) {
-            Text(text = selectedDevice.name)
+            Text(text = selectedDevice.name, fontWeight = FontWeight.Bold)
             Text(text = "Type: ${selectedDevice.type}")
             Text(text = "Status: ${selectedDevice.status}")
             Text(text = "MAC: ${selectedDevice.mac}")
@@ -149,5 +152,15 @@ val devicesList = listOf(
     Device("Cam-5", "Camera", "live", "fe:fe:f3:fe", "SM-03"),
     Device("Rep-1", "Camera", "dead", "fe:fe:f3:fe", "SM-03"),
     Device("LD-4", "LiveData", "mute", "fe:fe:f3:fe", "SM-03"),
-    Device("Dmitrii", "Participant", "approved", "fe:fe:f3:fe", "no")
+    Device("Dmitrii", "Participant", "approved", "fe:fe:f3:fe", "no"),
+    Device("Temp-7", "Sensor", "live", "ab:cd:ef:12", "SM-02"),
+    Device("Light-12", "Light", "blocked", "ab:cd:ef:34", "SM-04"),
+    Device("Sensor-2", "Sensor", "approved", "ab:cd:ef:56", "SM-05"),
+    Device("Control-9", "Controller", "mute", "ab:cd:ef:78", "SM-06"),
+    Device("Relay-3", "Relay", "live", "ab:cd:ef:90", "SM-07"),
+    Device("Cam-6", "Camera", "dead", "ab:cd:ef:aa", "SM-08"),
+    Device("LD-5", "LiveData", "approved", "ab:cd:ef:bb", "no"),
+    Device("Mic-1", "Microphone", "live", "ab:cd:ef:cc", "SM-09"),
+    Device("Rep-2", "Camera", "blocked", "ab:cd:ef:dd", "SM-10"),
+    Device("Hub-1", "Hub", "mute", "ab:cd:ef:ee", "SM-11")
 )

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,16 +27,15 @@ fun MessageScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp), // Общий отступ для экрана
+            .padding(8.dp), // Общий отступ для экрана
         horizontalAlignment = Alignment.Start
     ) {
         Text(
             text = "Messages",
             style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier.padding(bottom = 8.dp)
         )
 
-        Divider()
 
         // Имя и Период
         Row(
@@ -46,8 +44,8 @@ fun MessageScreen(
                 .padding(bottom = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = "Name: Dmitrii", style = MaterialTheme.typography.bodySmall)
-            Text(text = "Period: Today", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Name: Manager", style = MaterialTheme.typography.bodyMedium)
+            Text(text = "Period: Today", style = MaterialTheme.typography.bodyMedium)
         }
 
         HorizontalDivider()

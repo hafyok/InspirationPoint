@@ -27,7 +27,7 @@ fun MessageReceived(listMessage: List<MessageReceived>){
     )
 
     // Таблица с данными
-    Column(modifier = Modifier.fillMaxWidth().height(120.dp)) {
+    Column(modifier = Modifier.fillMaxWidth().height(110.dp)) {
         // Заголовки
         Row(
             modifier = Modifier.fillMaxWidth(),
